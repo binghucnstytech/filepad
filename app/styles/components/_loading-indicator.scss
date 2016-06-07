@@ -1,0 +1,23 @@
+.loading-indicator {
+  display: none;
+  width: 100%;
+  font-size: 24px;
+  padding: 80px 0;
+  color: #29A2D9;
+  text-align: center;
+
+  &.active {
+    display: block;
+  }
+}
+
+.three-bounce {
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -o-animation: none !important;
+  -ms-animation: none !important;
+
+  & > div {
+    background-color: #29A2D9 !important;
+  }
+}

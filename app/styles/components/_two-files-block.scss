@@ -1,0 +1,22 @@
+.two-files-block-container {
+  margin-left: 10px;
+  .block-item {
+    position: relative;
+    float: left;
+    width: 50%;
+  }
+
+  .single-file-block {
+    &.left-block {
+      margin-right: 0;
+      padding-left: 0;
+
+    }
+    &.right-block {
+      margin-left:0;
+      padding-left:0;
+    }
+  }
+
+  @include susy-clearfix();
+}

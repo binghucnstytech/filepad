@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.12.4",
+    "http-auth": "^2.2.7",
+    "express-http-proxy": "^0.6.0",
+    "compression": "^1.4.4",
+    "superagent": "^1.2.0",
+    "body-parser": "^1.13.2",
+    "adm-zip": "^0.4.7",
+    "zip": "^1.2.0",
+    "lodash": "^3.10.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

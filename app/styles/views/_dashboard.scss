@@ -1,0 +1,164 @@
+
+.dashboard-background {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  background-color: #303436;
+}
+
+.dashboard {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  background-color: #303436;
+}
+
+$pad-list-line-height: 57px;
+$pad-list-width: 700px;
+$pad-list-button-width: 86px;
+
+.pads-list {
+  font-size: 18px;
+  width: $pad-list-width;
+  color: #FEFEFE;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #484E52;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+
+  box-shadow: 0px 8px 40px 0px rgba(0,0,0,0.50);
+
+  li {
+    height: $pad-list-line-height;
+    border-bottom: solid 1px #444444;
+    margin: 0;
+    padding: 0 0 0 40px;
+
+    &.header {
+      background-color: #3D4245;
+      height: 72px;
+    }
+
+    input {
+      width: 90%;
+      height: 33px;
+      background-color: #EAEAEA;
+      border-radius: 2px;
+      color: #303436;
+      border: none;
+      margin: 10px 25px 0px 25px;
+      border: solid 1px transparent;
+      padding-left: 10px;
+
+      &:focus {
+        outline: none;
+        border: solid 1px #32A3D7;
+      }
+    }
+
+    &.is-renaming {
+      padding: 0;
+    }
+
+    &.footer {
+      background-color: #3D4245 !important;
+      &:hover {
+        background-color: #3D4245;
+      }
+
+      padding-left: 0;
+
+      .logo {
+        float:left;
+        width: 135px;
+        height: $pad-list-line-height;
+        opacity: 1;
+
+        background-image: url(/images/ic-file-pad-logo.svg);
+        background-position: center center;
+        background-size: 94px;
+        background-repeat: no-repeat;
+      }
+
+      .create-new {
+        position: relative;
+
+        float: right;
+        width: 120px;
+        padding-left: 34px;
+        line-height: $pad-list-line-height;
+        color: #9B9B9B;
+        cursor: pointer;
+
+        .icon-overlay {
+          position: absolute;
+          left: 0; top:0; bottom: 0;
+          width: 25px;
+          background-color: rgba(61,66,69,0.6);
+        }
+
+        background-image: url(/images/ic-create-new-pad.svg);
+        background-position: 0px center;
+        background-repeat: no-repeat;
+
+        &:hover {
+          color: #FEFEFE;
+
+          .icon-overlay {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .name {
+      display: block;
+      float:left;
+      line-height: $pad-list-line-height;
+    }
+
+
+    &:hover {
+      background-color: #52575B;
+      .controls {
+        display: block;
+      }
+    }
+
+    .controls {
+      display: none;
+      float: right;
+      button {
+        height: $pad-list-line-height;
+        width: $pad-list-button-width;
+        background-color: #52575B;
+        color: #B9B9B9;
+        border: none;
+
+        border-bottom: solid 4px transparent;
+
+        &:focus {
+          outline: none;
+        }
+
+        &:hover {
+          background-color: #5F6468;
+          color: #FEFEFE;
+          border-bottom: solid 4px #32A3D7;
+        }
+      }
+    }
+
+    @include susy-clearfix();
+  }
+}

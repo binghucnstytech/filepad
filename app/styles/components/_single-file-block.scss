@@ -1,0 +1,231 @@
+$single-file-thumb-height: 320px;
+
+.single-file-block-drop-overlay {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  &.active {
+    display: block;
+  }
+}
+
+.single-file-block {
+  position: relative;
+  display: block;
+  margin: 0px 20px;
+  padding: 5px 10px;
+  padding-bottom: 20px;
+
+  .file-zone {
+    position: relative;
+    // height: $single-file-thumb-height;
+    padding: 10px;
+    max-height: 1000px;
+    background-color: #F9F9F9;
+    border-radius: 5px;
+
+    &.no-thumbnail {
+      height: $single-file-thumb-height;
+    }
+
+    &.is-empty {
+      vertical-align: middle;
+      text-align: center;
+      // line-height: $single-file-thumb-height;
+    }
+
+    .empty-state {
+      margin: 0;
+      line-height: 300px;
+    }
+
+    .download-overlay {
+      position: absolute;
+      display: none;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      border-radius: 5px;
+
+      background-image: url(/images/ic-download-overlay.svg);
+      background-position: center center;
+      background-size: 72px 72px;
+      background-repeat: no-repeat;
+    }
+
+    &:hover {
+      .download-overlay {
+        display: block;
+      }
+    }
+
+    .progress-container {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 36px;
+      background-color: transparent;
+    }
+
+    .filesize {
+      display: block;
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      background: rgba(255,255,255,0.7);
+      font-size: 12px;
+      color: #333;
+      padding: 0px 5px;
+      border-radius: 2px;
+    }
+
+    .preview-container {
+      position: relative;
+      padding: 0;
+
+      .preview-icon {
+        position: absolute;
+        left: 10px; top: 10px; right: 10px; bottom: 10px;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        &.fill-image {
+          background-size: cover;
+        }
+
+        &.fit-image {
+          background-size: contain;
+        }
+
+        &.icon {
+          position: absolute;
+          left: 45px; top: 45px; right: 45px; bottom: 45px;
+        }
+
+        &.fmt-excel {
+          background-image: url(/images/ic-format-excel.svg);
+          background-size: contain;
+        }
+
+        &.fmt-pdf {
+          background-image: url(/images/ic-format-pdf.svg);
+          background-size: contain;
+        }
+
+        &.fmt-word {
+          background-image: url(/images/ic-format-word.svg);
+          background-size: contain;
+        }
+
+        &.fmt-video {
+          background-image: url(/images/ic-format-video.svg);
+          background-size: contain;
+        }
+
+        &.fmt-image {
+          background-image: url(/images/ic-format-image.svg);
+          background-size: contain;
+        }
+
+        &.fmt-default {
+          background-image: url(/images/ic-format-default.svg);
+          background-size: contain;
+        }
+      }
+    }
+
+    .preview {
+      // left: 10px; top: 10px; right: 10px; bottom: 10px;
+
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      &.fill-image {
+        background-size: cover;
+      }
+
+      &.fit-image {
+        background-size: contain;
+      }
+
+      &.icon {
+        position: absolute;
+        left: 45px; top: 45px; right: 45px; bottom: 45px;
+      }
+
+      &.fmt-excel {
+        background-image: url(/images/ic-format-excel.svg);
+        background-size: contain;
+      }
+
+      &.fmt-pdf {
+        background-image: url(/images/ic-format-pdf.svg);
+        background-size: contain;
+      }
+
+      &.fmt-word {
+        background-image: url(/images/ic-format-word.svg);
+        background-size: contain;
+      }
+
+      &.fmt-video {
+        background-image: url(/images/ic-format-video.svg);
+        background-size: contain;
+      }
+
+      &.fmt-image {
+        background-image: url(/images/ic-format-image.svg);
+        background-size: contain;
+      }
+
+      &.fmt-default {
+        background-image: url(/images/ic-format-default.svg);
+        background-size: contain;
+      }
+    }
+  }
+
+  .title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 28px;
+    padding-top: 5px;
+    margin: 0.4em 0 0.7em 0;
+  }
+
+  .description-section {
+
+    .description {
+      font-size: 18px;
+      color: #606873;
+      line-height: 23px;
+      padding-top: 5px;
+      word-wrap: break-word;
+
+      margin: 0.7em 0 0.3em 0;
+    }
+
+    .controls {
+      text-align: right;
+        span {
+          font-size: 14px;
+          display: block;
+          margin: 4px 0;
+          color: #29A2D9;
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+    }
+
+  }
+}
+
+

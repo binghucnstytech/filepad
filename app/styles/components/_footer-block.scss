@@ -1,0 +1,14 @@
+.footer-block {
+  .content {
+    position: relative;
+    > div {
+      margin: 0;
+      text-align: right;
+      padding: 1em 2em;
+      color: #aaa;
+      background-color: #fafafa;
+      border-top: solid 1px #ddd;
+      border-bottom: solid 1px #ddd;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="118px" height="32px" viewBox="0 0 118 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>ic-file-pad-logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-9" sketch:type="MSArtboardGroup" transform="translate(-255.000000, -559.000000)" fill="#32A3D7">
+            <g id="list-background" sketch:type="MSLayerGroup" transform="translate(227.000000, 202.000000)">
+                <g id="ic-file-pad-logo" transform="translate(28.000000, 357.000000)">
+                    <g transform="translate(0.000000, 0.500000)" sketch:type="MSShapeGroup">
+                        <path d="M25.1914894,7.4893617 L27.2340426,7.4893617 L27.2340426,28.3161373 C27.2340426,29.9746548 25.8835021,31.3191489 24.2416193,31.3191489 L2.99242329,31.3191489 C1.33975354,31.3191489 0,29.9734043 0,28.3161373 L0,3.00301166 C0,1.34449412 1.3505404,0 2.99242329,0 L19.7446809,0 L19.7446809,0 L19.7446809,2.04255319 L2.04255319,2.04255319 L2.04255319,29.2765957 L25.1914894,29.2765957 L25.1914894,7.4893617 Z" id="Rectangle-1"></path>
+                        <path d="M25.1914894,9.53191489 L21.7038945,9.53191489 C19.4937797,9.53191489 17.7021277,7.73772461 17.7021277,5.53836714 L17.7021277,1.36170213 L17.7021277,1.36170213 L19.7446809,1.36170213 L19.7446809,7.4893617 L25.1914894,7.4893617 L25.1914894,9.53191489 Z" id="Rectangle-4"></path>
+                        <path d="M20.4255319,0 L27.2340426,6.80851064 L20.4255319,6.80851064 L20.4255319,0 Z" id="Rectangle-8"></path>
+                        <rect id="Rectangle-9" x="4.76595745" y="12.9361702" width="17.0212766" height="2.04255319"></rect>
+                        <rect id="Rectangle-9-Copy-4" x="4.76595745" y="7.4893617" width="10.893617" height="2.04255319"></rect>
+                        <rect id="Rectangle-9-Copy" x="4.76595745" y="18.3829787" width="17.0212766" height="2.04255319"></rect>
+                        <rect id="Rectangle-9-Copy-2" x="4.76595745" y="23.8297872" width="17.0212766" height="2.04255319"></rect>
+                    </g>
+                    <text id="FilePad" sketch:type="MSTextLayer" font-family="Source Sans Pro" font-size="26" font-weight="normal">
+                        <tspan x="39" y="26">FilePad</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
