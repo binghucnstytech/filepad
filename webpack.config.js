@@ -4,11 +4,12 @@ var webpack = require('webpack');
 var rootDir = path.join(__dirname, 'app');
 
 module.exports = {
-  context: path.join(rootDir, 'scripts'),
+  context: path.join(rootDir),
+  devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:8080',
     'react-hot-loader/patch',
-    './app.js',
+    './scripts/app.js',
   ],
   output: {
     path: path.join(rootDir, 'dist'),
@@ -18,7 +19,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     root: [
-      path.join(rootDir, 'src'),
+      path.join(rootDir, 'scripts'),
     ],
   },
   plugins: [

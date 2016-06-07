@@ -1,7 +1,9 @@
-import React, { Component, PropTypes } from 'react';
 
-import { Router, Route, Link } from 'react-router';
-import { history } from 'react-router/lib/HashHistory';
+import '../styles/main.scss';
+import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+
+import { Router, Route, Link, hashHistory } from 'react-router';
 
 import update from 'react/lib/update';
 import _ from 'lodash';
@@ -11,22 +13,22 @@ var HTML5Backend = require('react-dnd/modules/backends/HTML5');
 import { DragDropContext } from 'react-dnd';
 import { DragSource, DropTarget } from 'react-dnd';
 
-import Guid from 'guid'
-import Types from './components/DNDType.js'
-import BlockType from './components/BlockType.js'
+import Guid from 'guid';
+import Types from './components/DNDType.js';
+import BlockType from './components/BlockType.js';
 
-import Sidebar from './components/Sidebar.js'
-import NavigationBar from './components/NavigationBar.js'
+import Sidebar from './components/Sidebar.js';
+import NavigationBar from './components/NavigationBar.js';
 
-import DraggableBlock from './components/DraggableBlock.js'
-import BaseBlock from './components/BaseBlock.js'
-import TextBlock from './components/TextBlock.js'
-import FooterBlock from './components/FooterBlock.js'
-import SingleFileBlock from './components/SingleFileBlock.js'
-import TwoFilesBlock from './components/TowFilesBlock.js'
-import TitleBlock from './components/TitleBlock.js'
-import SubtitleBlock from './components/SubtitleBlock.js'
-import FilesBlock from './components/FilesBlock.js'
+import DraggableBlock from './components/DraggableBlock.js';
+import BaseBlock from './components/BaseBlock.js';
+import TextBlock from './components/TextBlock.js';
+import FooterBlock from './components/FooterBlock.js';
+import SingleFileBlock from './components/SingleFileBlock.js';
+import TwoFilesBlock from './components/TowFilesBlock.js';
+import TitleBlock from './components/TitleBlock.js';
+import SubtitleBlock from './components/SubtitleBlock.js';
+import FilesBlock from './components/FilesBlock.js';
 
 import LoadingIndicator from './components/LoadingIndicator.js';
 
@@ -109,7 +111,7 @@ const canvasTarget = {
 
     hover(props, monitor, component) {
         const clientOffset = monitor.getClientOffset();
-        const componentRect = React.findDOMNode(component).getBoundingClientRect();
+        const componentRect = ReactDOM.findDOMNode(component).getBoundingClientRect();
         const isJustOverThisOne = monitor.isOver({ shallow: true });
         const canDrop = monitor.canDrop();
 
@@ -163,7 +165,7 @@ const dropZoneTarget = {
 
     hover(props, monitor, component) {
         const clientOffset = monitor.getClientOffset();
-        const componentRect = React.findDOMNode(component).getBoundingClientRect();
+        const componentRect = ReactDOM.findDOMNode(component).getBoundingClientRect();
         const isJustOverThisOne = monitor.isOver({ shallow: true });
         const canDrop = monitor.canDrop();
     },
@@ -454,7 +456,7 @@ const extendedDropZoneTarget = {
 
     hover(props, monitor, component) {
         const clientOffset = monitor.getClientOffset();
-        const componentRect = React.findDOMNode(component).getBoundingClientRect();
+        const componentRect = ReactDOM.findDOMNode(component).getBoundingClientRect();
         const isJustOverThisOne = monitor.isOver({ shallow: true });
         const canDrop = monitor.canDrop();
 
@@ -812,24 +814,27 @@ import AppEx from './containers/App.js';
 import Dashboard from './views/Dashboard.js';
 
 
-initBend(function(err){
-    if(err) {
-        console.log("Error while initializing bend!");
-        console.log(err);
-        return;
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  initBend(function(err){
+      if(err) {
+          console.log("Error while initializing bend!");
+          console.log(err);
+          return;
+      }
 
-    var routes =  (
-        <Router history={history}>
-            <Route path="/" component={Dashboard}/>
-            <Route path="/pad/:padID" component={App}/>
-        </Router>
-    );
+      var routes =  (
+          <Router history={hashHistory}>
+              <Route path="/" component={Dashboard}/>
+              <Route path="/pad/:padID" component={App}/>
+          </Router>
+      );
 
-    React.render(routes,document.querySelector('#content'));
+      ReactDOM.render(routes, document.querySelector('#content'));
 
-    // React.render(<App />, document.querySelector('#content'));
-    // React.render(<Dashboard />, document.querySelector('#content'));
-    // React.render(<AppEx />, document.querySelector('#content'));
-    // React.render(<UploaderApp/>, document.querySelector('#content'));
+      // React.render(<App />, document.querySelector('#content'));
+      // React.render(<Dashboard />, document.querySelector('#content'));
+      // React.render(<AppEx />, document.querySelector('#content'));
+      // React.render(<UploaderApp/>, document.querySelector('#content'));
+  });
+
 });

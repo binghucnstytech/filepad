@@ -1,10 +1,12 @@
 import React, { PropTypes, Component } from 'react';
+import ReactDOM from 'react-dom';
 import BendUtils from '../common/bend-utils.js';
 import _ from 'lodash';
 import classes from 'classnames';
 import { Router, Route, Link, Navigation, TransitionHook } from 'react-router';
 import LoadingIndicator from '../components/LoadingIndicator.js'
 
+import { withRouter } from 'react-router';
 
 // export default class Dashboard extends Component {
 var Dashboard = React.createClass({
@@ -58,7 +60,7 @@ var Dashboard = React.createClass({
 
     editPad(id) {
         // console.log("edit: "+id);
-        this.transitionTo('/pad/'+id);
+        this.props.router.push('/pad/'+id);
     },
 
     renamePad(id) {
@@ -69,7 +71,7 @@ var Dashboard = React.createClass({
             renamingID: id,
             _padName: pad.name
         },() => {
-            var input = React.findDOMNode(this.refs.nameInput);
+            var input = ReactDOM.findDOMNode(this.refs.nameInput);
             if(input) {
                 console.log("We'have found input!");
                 input.focus();
@@ -104,7 +106,7 @@ var Dashboard = React.createClass({
         var pads = _.clone(this.state.pads,true);
         var pad = _.find(pads,(pad) => pad._id === this.state.renamingID);
         if(pad) {
-            pad.name = React.findDOMNode(this.refs.nameInput).value;
+            pad.name = ReactDOM.findDOMNode(this.refs.nameInput).value;
             this.setState({
                 pads: pads,
                 renamingID: ''
@@ -228,4 +230,4 @@ var Dashboard = React.createClass({
     }
 });
 
-export default Dashboard;
+export default withRouter(Dashboard);
