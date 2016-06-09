@@ -5,7 +5,7 @@ import _ from 'lodash';
 import classes from 'classnames'
 import Guid from 'guid'
 
-var HTML5Backend = require('react-dnd/modules/backends/HTML5');
+import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend';
 import { DragSource, DropTarget } from 'react-dnd';
 
 import BaseBlock from './BaseBlock.js'
@@ -284,7 +284,7 @@ class FileListItem extends Component {
 }
 
 
-@DropTarget([HTML5Backend.NativeTypes.FILE], fileListTarget, (connect, monitor) => ({
+@DropTarget([NativeTypes.FILE], fileListTarget, (connect, monitor) => ({
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver(),
     isOverCurrent: monitor.isOver({ shallow: true }),

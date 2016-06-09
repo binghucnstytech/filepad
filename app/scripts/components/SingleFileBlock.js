@@ -5,7 +5,7 @@ import ContentEditable from './content-editable.js'
 import _ from 'lodash';
 import Types from './DNDType.js';
 import { DropTarget } from 'react-dnd';
-var HTML5Backend = require('react-dnd/modules/backends/HTML5');
+import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend';
 import classes from 'classnames';
 import { upload } from '../common/bend-uploader.js';
 import BendUtils from '../common/bend-utils.js';
@@ -85,7 +85,7 @@ const fileTarget = {
 };
 
 
-@DropTarget([HTML5Backend.NativeTypes.FILE], fileTarget, (connect, monitor) => ({
+@DropTarget([NativeTypes.FILE], fileTarget, (connect, monitor) => ({
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver(),
     isOverCurrent: monitor.isOver({ shallow: true }),

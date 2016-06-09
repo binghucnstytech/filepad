@@ -9,7 +9,7 @@ import update from 'react/lib/update';
 import _ from 'lodash';
 import ContentEditable from './components/content-editable.js'
 
-var HTML5Backend = require('react-dnd/modules/backends/HTML5');
+import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import { DragSource, DropTarget } from 'react-dnd';
 
