@@ -506,13 +506,14 @@ class AppWrapper extends Component {
 
     componentDidMount() {
         console.log("LOGGING ROUTER:");
-        console.log(this.props.location);
+        console.log(this.props.padID);
 
 
         // Dev: 55ae3f4b4bad30379700e345
         // Prod: 55a32ab04bad3037970043e5
 
-        var id = _.last(this.props.location.pathname.split('/'));
+        // var id = _.last(this.props.location.pathname.split('/'));
+        var id = this.props.padID;
         console.log(id);
         this.fetchPad(id,(err,pad) => {
             if(err) {
@@ -756,18 +757,15 @@ class AppWrapper extends Component {
 
 
 var AppRouter = React.createClass({
-    contextTypes: {
-        router: React.PropTypes.func
-    },
     render() {
-        return (<AppWrapper location={this.props.location}/>);
+        return (<AppWrapper padID={this.props.padID} />);
     }
 });
 
 @DragDropContext(HTML5Backend)
 class App extends Component {
     render() {
-        return (<AppRouter location={this.props.location}/>);
+        return (<AppRouter padID={this.props.params.padID} />);
     }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom'
 
 export default class ContentEditable extends React.Component {
     constructor() {
@@ -25,12 +26,12 @@ export default class ContentEditable extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return nextProps.html !== React.findDOMNode(this).innerHTML;
+        return nextProps.html !== ReactDOM.findDOMNode(this).innerHTML;
     }
 
     componentDidMount() {
         if(this.props.focus) {
-            var node = React.findDOMNode(this.refs.contentDiv);
+            var node = ReactDOM.findDOMNode(this.refs.contentDiv);
             if(node) {
                 node.focus();
                 // node.select();
@@ -45,13 +46,13 @@ export default class ContentEditable extends React.Component {
     }
 
     componentDidUpdate() {
-        if ( this.props.html !== React.findDOMNode(this).innerHTML ) {
+        if ( this.props.html !== ReactDOM.findDOMNode(this).innerHTML ) {
             React.findDOMNode(this).innerHTML = this.props.html;
         }
     }
 
     emitChange(evt) {
-        var html = React.findDOMNode(this).innerHTML;
+        var html = ReactDOM.findDOMNode(this).innerHTML;
         if (this.props.onChange && html !== this.lastHtml) {
             evt.target = { value: html };
             this.props.onChange(evt);

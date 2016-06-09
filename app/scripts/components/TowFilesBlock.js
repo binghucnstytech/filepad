@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import BaseBlock from './BaseBlock.js'
 import ContentEditable from './content-editable.js'
 import _ from 'lodash';
@@ -69,7 +70,7 @@ const fileTarget = {
 
     hover(props, monitor, component) {
         const clientOffset = monitor.getClientOffset();
-        const componentRect = React.findDOMNode(component).getBoundingClientRect();
+        const componentRect = ReactDOM.findDOMNode(component).getBoundingClientRect();
         const isJustOverThisOne = monitor.isOver({ shallow: true });
         const canDrop = monitor.canDrop();
     },
