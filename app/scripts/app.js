@@ -15,10 +15,9 @@ import { upload } from 'common/bend-uploader.js';
 
 import DropZoneBar from 'containers/DropZoneBar';
 import SaveIndicator from 'components/SaveIndicator';
-import AppWrapper from 'containers/App';
 
-import AppEx from './containers/App.js';
-import Dashboard from './views/Dashboard.js';
+import AppWrapper from 'containers/App';
+import Dashboard from './containers/Dashboard.js';
 
 @DragDropContext(HTML5Backend)
 class App extends Component {
