@@ -6,6 +6,7 @@ import update from 'react/lib/update';
 import classes from 'classnames';
 import _ from 'lodash';
 
+import BlockType from 'components/BlockType.js';
 import { defaultDataForBlockType } from 'common';
 import BendUtils from 'common/bend-utils.js';
 
