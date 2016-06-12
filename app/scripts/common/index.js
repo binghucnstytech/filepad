@@ -54,6 +54,12 @@ export function defaultDataForBlockType(type) {
         justAdded: true,
       };
 
+    case BlockType.RichText:
+      return {
+        text: 'Text Paragraph',
+        justAdded: true,
+      };
+
     case BlockType.Title:
       return {
         text: 'Page Header',
