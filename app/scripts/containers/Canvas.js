@@ -5,6 +5,7 @@ import classes from 'classnames';
 
 import Guid from 'guid';
 
+import { defaultDataForBlockType } from 'common';
 import BlockType from 'components/BlockType.js';
 import Types from 'components/DNDType.js';
 
@@ -13,6 +14,7 @@ import DropZoneBar from 'containers/DropZoneBar';
 import DraggableBlock from 'components/DraggableBlock.js';
 import BaseBlock from 'components/BaseBlock.js';
 import TextBlock from 'components/TextBlock.js';
+import RichTextBlock from 'components/RichTextBlock.js';
 import FooterBlock from 'components/FooterBlock.js';
 import SingleFileBlock from 'components/SingleFileBlock.js';
 import TwoFilesBlock from 'components/TowFilesBlock.js';
@@ -168,6 +170,18 @@ export default class Canvas extends Component {
       case BlockType.Text:
         return (
           <TextBlock
+            viewMode={viewMode}
+            needFocus={data.justAdded}
+            data={data}
+            id={id}
+            onChange={this.onBlockDidChange.bind(this)}
+          />
+        );
+        break;
+
+      case BlockType.RichText:
+        return (
+          <RichTextBlock
             viewMode={viewMode}
             needFocus={data.justAdded}
             data={data}
