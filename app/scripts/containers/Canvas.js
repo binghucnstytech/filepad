@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { DropTarget } from 'react-dnd';
 import classes from 'classnames';
 
+import Guid from 'guid';
+
 import BlockType from 'components/BlockType.js';
 import Types from 'components/DNDType.js';
 
