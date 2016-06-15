@@ -1,0 +1,27 @@
+.CodeMirror {
+  border: 1px solid #eee;
+  height: auto;
+}
+
+.codes-block {
+  position: relative;
+  padding: 10px 30px 10px 30px;
+}
+
+.codes-block_add-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.codes-block_bar {
+  padding: 0 0 5px 0;
+}
+
+.codes-block_change-language {
+  margin: 0 10px 0 0;
+}
+
+.codes-block_remove-tab {
+  margin: 0 5px 0 0;
+}

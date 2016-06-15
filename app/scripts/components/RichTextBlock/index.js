@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import RichTextEditor from 'react-rte';
 import BaseBlock from 'components/BaseBlock';
-import ContentEditable from './content-editable.js'
+import ContentEditable from 'components/content-editable.js'
+import './styles.css';
 
 export default class RichTextBlock extends BaseBlock {
   static propTypes = {
@@ -37,7 +38,7 @@ export default class RichTextBlock extends BaseBlock {
 
     if (this.isEditable()) {
       return (
-        <div className="text-block">
+        <div className="rich-text-block">
           <div className="content">
             <RichTextEditor
               value={this.state.value}
@@ -48,7 +49,7 @@ export default class RichTextBlock extends BaseBlock {
       );
     } else {
       return (
-        <div className="text-block">
+        <div className="rich-text-block">
           <div className="content">
             <div dangerouslySetInnerHTML={{ __html: data.text }} />
           </div>
