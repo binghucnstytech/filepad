@@ -5,20 +5,23 @@ import classes from 'classnames';
 
 import Guid from 'guid';
 
-import BlockType from 'components/BlockType.js';
-import Types from 'components/DNDType.js';
+import { defaultDataForBlockType } from 'common';
+import BlockType from 'components/BlockType';
+import Types from 'components/DNDType';
 
 import DropZoneBar from 'containers/DropZoneBar';
 
-import DraggableBlock from 'components/DraggableBlock.js';
-import BaseBlock from 'components/BaseBlock.js';
-import TextBlock from 'components/TextBlock.js';
-import FooterBlock from 'components/FooterBlock.js';
-import SingleFileBlock from 'components/SingleFileBlock.js';
-import TwoFilesBlock from 'components/TowFilesBlock.js';
-import TitleBlock from 'components/TitleBlock.js';
-import SubtitleBlock from 'components/SubtitleBlock.js';
-import FilesBlock from 'components/FilesBlock.js';
+import DraggableBlock from 'components/DraggableBlock';
+import BaseBlock from 'components/BaseBlock';
+import TextBlock from 'components/TextBlock';
+import RichTextBlock from 'components/RichTextBlock';
+import FooterBlock from 'components/FooterBlock';
+import SingleFileBlock from 'components/SingleFileBlock';
+import TwoFilesBlock from 'components/TowFilesBlock';
+import TitleBlock from 'components/TitleBlock';
+import SubtitleBlock from 'components/SubtitleBlock';
+import FilesBlock from 'components/FilesBlock';
+import CodesBlock from 'components/CodesBlock';
 
 import LoadingIndicator from 'components/LoadingIndicator';
 
@@ -177,6 +180,18 @@ export default class Canvas extends Component {
         );
         break;
 
+      case BlockType.RichText:
+        return (
+          <RichTextBlock
+            viewMode={viewMode}
+            needFocus={data.justAdded}
+            data={data}
+            id={id}
+            onChange={this.onBlockDidChange.bind(this)}
+          />
+        );
+        break;
+
       case BlockType.Title:
         return (
           <TitleBlock
@@ -227,6 +242,17 @@ export default class Canvas extends Component {
       case BlockType.TwoFiles:
         return (
           <TwoFilesBlock
+            viewMode={viewMode}
+            id={id}
+            data={data}
+            onChange={this.onBlockDidChange.bind(this)}
+          />
+        );
+        break;
+
+      case BlockType.CodeList:
+        return (
+          <CodesBlock
             viewMode={viewMode}
             id={id}
             data={data}

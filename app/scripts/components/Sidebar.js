@@ -33,6 +33,8 @@ class SidebarBlock extends Component {
                 return mode === 'list' ? "ic-file-list" : "ic-thumbnails";
             case BlockType.Text:
                 return "ic-paragraph";
+            case BlockType.RichText:
+                return "ic-paragraph";
             case BlockType.Footer:
                 return "ic-footer";
         }
@@ -67,6 +69,8 @@ export default class Sidebar extends Component {
                     <SidebarBlock name={"Thumbnails List"} type={BlockType.FileList} mode={'thumbnails'}/>
                     <SidebarBlock name={"Vertical File List"} type={BlockType.FileList} mode={'list'}/>
                     <SidebarBlock name={"Text Paragraph"} type={BlockType.Text}/>
+                    <SidebarBlock name={"Codes List"} type={BlockType.CodeList}/>
+                    <SidebarBlock name={"RichText Paragraph"} type={BlockType.RichText}/>
                     <SidebarBlock name={"Footer"} type={BlockType.Footer}/>
                 </div>
             </div>

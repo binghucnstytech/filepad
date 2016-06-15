@@ -48,7 +48,24 @@ export function defaultDataForBlockType(type) {
       };
     }
 
+    case BlockType.CodeList: {
+      return {
+        codes: [
+          {
+            language: 'javascript',
+            text: "function() {\n  console.log()\n}\n",
+          },
+        ],
+      };
+    }
+
     case BlockType.Text:
+      return {
+        text: 'Text Paragraph',
+        justAdded: true,
+      };
+
+    case BlockType.RichText:
       return {
         text: 'Text Paragraph',
         justAdded: true,
