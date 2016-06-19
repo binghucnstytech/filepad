@@ -1,19 +1,17 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var rootDir = path.join(__dirname, 'app');
 
 module.exports = {
   context: path.join(rootDir),
-  devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'react-hot-loader/patch',
     './scripts/app.js',
   ],
   output: {
-    path: path.join(rootDir, 'dist'),
+    path: path.join(__dirname, 'dist', 'public'),
     filename: 'bundle.js',
     publicPath: '/',
   },
@@ -25,11 +23,18 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      __DEV__: true,
+      'process.env.NODE_ENV': '"production"',
+      __DEV__: false,
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        unused: true,
+        dead_code: true,
+      },
+    }),
+    new ExtractTextPlugin('styles.css', { allChunks: true }),
     new HtmlWebpackPlugin({
       title: 'FilePad',
       template: 'index.ejs',
@@ -49,20 +54,17 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: [
+        loader: ExtractTextPlugin.extract(
           'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
+          'css-loader!postcss-loader!sass-loader'
+        ),
       },
       {
         test: /\.css$/,
-        loaders: [
+        loader: ExtractTextPlugin.extract(
           'style-loader',
-          'css-loader',
-          'postcss-loader',
-        ],
+          'css-loader!postcss-loader'
+        ),
       },
       {
         test: /\.(png|jpg)$/,

@@ -4,3 +4,4 @@ node_modules
 .sass-cache
 .DB_Store
 dist
+gulp_logs
