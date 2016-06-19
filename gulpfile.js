@@ -72,12 +72,12 @@ gulp.task('deploy', function (callback) {
     'copy:server',
     'copy:assets',
     'deploy:compress',
+    'deploy:remote-write',
+    'deploy:remote-extract',
+    'deploy:bootstrap-server',
+    'deploy:restart-server',
     callback);
 
-    // 'deploy:remote-write',
-    // 'deploy:remote-extract',
-    // 'deploy:bootstrap-server',
-    // 'deploy:restart-server',
 });
 
 gulp.task('deploy-only', function (callback) {
