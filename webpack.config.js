@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var rootDir = path.join(__dirname, 'app');
 
@@ -29,6 +30,11 @@ module.exports = {
     new webpack.DefinePlugin({
       __DEV__: true,
     }),
+    new HtmlWebpackPlugin({
+      title: 'FilePad',
+      template: 'index.ejs',
+      inject: 'body',
+    }),
   ],
   module: {
     loaders: [
@@ -48,7 +54,7 @@ module.exports = {
           'css-loader',
           'postcss-loader',
           'sass-loader',
-        ]
+        ],
       },
       {
         test: /\.css$/,
@@ -56,12 +62,12 @@ module.exports = {
           'style-loader',
           'css-loader',
           'postcss-loader',
-        ]
+        ],
       },
       {
         test: /\.(png|jpg)$/,
         loader: 'file-loader',
-      }
+      },
     ],
-  }
+  },
 };

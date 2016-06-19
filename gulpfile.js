@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
+var gulpSequence = require('gulp-sequence');
 var del = require('del');
 var gutil = require('gulp-util');
 var webpack = require('webpack');
@@ -40,16 +41,15 @@ gulp.task('clean:dist', function () {
 });
 
 gulp.task('build', function (callback) {
-  runSequence(
+  gulpSequence(
     ['clean:dev', 'clean:dist'],
     'webpack',
-    'bundle',
     callback);
 });
 
 gulp.task('copy:bend:dist', function () {
   return gulp.src('app/vendor/bend.js')
-    .pipe(gulp.dest('dist/public'));
+    .pipe(gulp.dest('dist/public/vendor'));
 });
 
 gulp.task('copy:assets', function () {
@@ -66,7 +66,7 @@ gulp.task('copy:server', function () {
 });
 
 gulp.task('deploy', function (callback) {
-  runSequence(
+  gulpSequence(
     'build',
     'copy:bend:dist',
     'copy:server',
@@ -81,7 +81,7 @@ gulp.task('deploy', function (callback) {
 });
 
 gulp.task('deploy-only', function (callback) {
-  runSequence(
+  gulpSequence(
     'copy:server',
     'copy:assets',
     'deploy:compress',

@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var rootDir = path.join(__dirname, 'app');
 
@@ -10,7 +11,7 @@ module.exports = {
     './scripts/app.js',
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist', 'public'),
     filename: 'bundle.js',
     publicPath: '/',
   },
@@ -24,6 +25,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
       __DEV__: false,
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -33,6 +35,11 @@ module.exports = {
       },
     }),
     new ExtractTextPlugin('styles.css', { allChunks: true }),
+    new HtmlWebpackPlugin({
+      title: 'FilePad',
+      template: 'index.ejs',
+      inject: 'body',
+    }),
   ],
   module: {
     loaders: [
