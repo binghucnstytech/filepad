@@ -3,7 +3,7 @@ import ReactDOM from 'react';
 import update from 'react/lib/update';
 import _ from 'lodash';
 import classes from 'classnames';
-import Guid from 'guid';
+import Uuid from 'uuid';
 
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend';
 import { DragSource, DropTarget } from 'react-dnd';
@@ -496,7 +496,7 @@ export default class FilesBlock extends BaseBlock {
 
     this.setState({
       files: this.state.files.concat(_.map(files, (file) => {
-        var id = Guid.raw();
+        var id = Uuid.v4();
         var findFile = () => (_.find(this.state.files, (file) => (file.id === id)));
 
         upload(file)

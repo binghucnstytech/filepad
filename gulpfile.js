@@ -65,18 +65,28 @@ gulp.task('copy:server', function () {
   ]).pipe(gulp.dest('dist/'));
 });
 
+gulp.task('deploy-local', function (callback) {
+  gulpSequence(
+      'build',
+      'copy:bend:dist',
+      'copy:server',
+      'copy:assets',
+      callback);
+
+});
+
 gulp.task('deploy', function (callback) {
   gulpSequence(
-    'build',
-    'copy:bend:dist',
-    'copy:server',
-    'copy:assets',
-    'deploy:compress',
-    'deploy:remote-write',
-    'deploy:remote-extract',
-    'deploy:bootstrap-server',
-    'deploy:restart-server',
-    callback);
+      'build',
+      'copy:bend:dist',
+      'copy:server',
+      'copy:assets',
+      'deploy:compress',
+      'deploy:remote-write',
+      'deploy:remote-extract',
+      'deploy:bootstrap-server',
+      'deploy:restart-server',
+      callback);
 
 });
 

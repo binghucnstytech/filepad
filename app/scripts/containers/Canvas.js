@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { DropTarget } from 'react-dnd';
 import classes from 'classnames';
 
-import Guid from 'guid';
+import Uuid from 'uuid';
 
 import { defaultDataForBlockType } from 'common';
 import BlockType from 'components/BlockType';
@@ -67,7 +67,7 @@ const canvasTarget = {
     const item = monitor.getItem();
     if (item.type && !component.hasBlocks()) {
       component.addBlock({
-        id: Guid.raw(),
+        id: Uuid.v4(),
         type: item.type,
         mode: item.mode,
         data: defaultDataForBlockType(item.type),

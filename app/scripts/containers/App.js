@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Guid from 'guid';
+import Uuid from 'uuid';
 import { DropTarget } from 'react-dnd';
 import update from 'react/lib/update';
 import classes from 'classnames';
@@ -42,7 +42,7 @@ const extendedDropZoneTarget = {
 
     if (itemType ===  Types.BlockPreset) {
       component.insertBlockAfter({
-        id: Guid.raw(),
+        id: Uuid.v4(),
         type: item.type,
         mode: item.mode,
         data: defaultDataForBlockType(item.type),

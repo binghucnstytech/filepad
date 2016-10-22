@@ -24,7 +24,7 @@ import 'codemirror/mode/go/go';
 import 'codemirror/mode/groovy/groovy';
 import 'codemirror/mode/haml/haml';
 import 'codemirror/mode/haskell/haskell';
-import 'codemirror/mode/jade/jade';
+//import 'codemirror/mode/jade/jade';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/jinja2/jinja2';
 import 'codemirror/mode/jsx/jsx';

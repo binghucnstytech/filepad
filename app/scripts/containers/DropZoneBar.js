@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { defaultDataForBlockType } from 'common';
 import { DropTarget } from 'react-dnd';
 import Types from 'components/DNDType.js';
-import Guid from 'guid';
+import Uuid from 'uuid';
 import classes from 'classnames';
 
 const dropZoneTarget = {
@@ -30,7 +30,7 @@ const dropZoneTarget = {
     switch (itemType) {
       case Types.BlockPreset: {
         component.props.insertBlock({
-          id: Guid.raw(),
+          id: Uuid.v4(),
           type: item.type,
           mode: item.mode,
           data: defaultDataForBlockType(item.type),

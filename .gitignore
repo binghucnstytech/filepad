@@ -5,3 +5,4 @@ node_modules
 .DB_Store
 dist
 gulp_logs
+bower_components
