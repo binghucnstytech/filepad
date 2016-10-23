@@ -5,6 +5,8 @@ var del = require('del');
 var gutil = require('gulp-util');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.production.config.js');
+var webpackDevConfig = require('./webpack.config.js');
+var WebpackDevServer = require("webpack-dev-server");
 
 var gzip = require('gulp-gzip');
 var tar = require('gulp-tar');
@@ -29,6 +31,24 @@ gulp.task('webpack', function (callback) {
       // output options
     }));
     callback();
+  });
+});
+
+gulp.task("webpack-dev-server", function(callback) {
+  // modify some webpack config options
+  var myConfig = Object.create(webpackDevConfig);
+  myConfig.devtool = "eval";
+  myConfig.debug = true;
+  // Start a webpack-dev-server
+  console.log("PATH: " + myConfig.output.publicPath);
+  new WebpackDevServer(webpack(myConfig), {
+    publicPath: "/" + myConfig.output.publicPath,
+    stats: {
+      colors: true
+    }
+  }).listen(3000, "localhost", function(err) {
+    if(err) throw new gutil.PluginError("webpack-dev-server", err);
+    gutil.log("[webpack-dev-server]", "http://localhost:3000/webpack-dev-server/build/index.html");
   });
 });
 

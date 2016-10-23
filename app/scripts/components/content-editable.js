@@ -7,17 +7,6 @@ export default class ContentEditable extends React.Component {
         this.emitChange = this.emitChange.bind(this);
     }
 
-    render() {
-        return <div
-            {...this.props}
-            ref="contentDiv"
-            onInput={this.emitChange}
-            onBlur={this.handleBlur.bind(this)}
-            className="no-outline"
-            contentEditable="true"
-            dangerouslySetInnerHTML={{__html: this.props.html}}></div>;
-    }
-
     handleBlur(e) {
         this.emitChange(e);
         if(this.props.onBlur) {
@@ -58,5 +47,20 @@ export default class ContentEditable extends React.Component {
             this.props.onChange(evt);
         }
         this.lastHtml = html;
+    }
+
+    render() {
+        const divProps = Object.assign({}, this.props);
+        delete divProps.html;
+        delete divProps.focus;
+
+        return <div
+            {...divProps}
+            ref="contentDiv"
+            onInput={this.emitChange}
+            onBlur={this.handleBlur.bind(this)}
+            className="no-outline"
+            contentEditable="true"
+            dangerouslySetInnerHTML={{__html: this.props.html}}></div>;
     }
 }

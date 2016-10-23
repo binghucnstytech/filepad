@@ -14,7 +14,7 @@ var server = new WebpackDevServer(compiler, {
     aggregateTimeout: 300,
     poll: 1000
   },
-  publicPath: "/assets/",
+  publicPath: "/app",
 });
 
 server.lister(3000, "localhost", function() {

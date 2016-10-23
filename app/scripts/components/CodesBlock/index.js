@@ -167,18 +167,18 @@ export default class CodesBlock extends BaseBlock {
           : null}
         <Tabs>
           <TabList>
-            {this.state.data.codes.map((data, index) => (<Tab>
+            {this.state.data.codes.map((data, index) => (<Tab key={'tab_' + index}>
               {data.language}
             </Tab>))}
           </TabList>
-          {this.state.data.codes.map((data, index) => (<TabPanel>
+          {this.state.data.codes.map((data, index) => (<TabPanel key={'tabPanle_' + index}>
             {this.isEditable() ?
               <div className="codes-block_bar">
                 <select
                   className="codes-block_change-language"
                   value={data.language}
                   onChange={this.handleChangeLanguage.bind(this, index)}>
-                  {languages.map((language) => (<option value={language}>{language}</option>))}
+                  {languages.map((language, index) => (<option key={'option_' + index} value={language}>{language}</option>))}
                 </select>
 
                 <a

@@ -596,7 +596,7 @@ export default class FilesBlock extends BaseBlock {
     const { isOver, canDrop, connectDropTarget, isDragging } = this.props;
     return connectDropTarget(
       <div className="files-block">
-        <div className="container">
+        <div className="container-block">
           { this.hasFiles() ? this.renderFiles() : this.renderEmpty()}
         </div>
         <div className={classes('drop-overlay', isOver ? 'active' : '')}></div>

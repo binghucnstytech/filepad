@@ -2,7 +2,7 @@ import '../styles/main.scss';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import { Router, Route, Link, hashHistory } from 'react-router';
+import { Router, Route, Link, hashHistory, browserHistory, IndexRoute } from 'react-router';
 
 import _ from 'lodash';
 
@@ -16,6 +16,11 @@ import { upload } from 'common/bend-uploader.js';
 import DropZoneBar from 'containers/DropZoneBar';
 import SaveIndicator from 'components/SaveIndicator';
 
+import BasePage from './components/Layout/BasePage';
+import Login from './containers/Login';
+import Signup from './containers/Signup';
+import Error500 from './containers/Error500';
+import NotFound from './containers/NotFound';
 import AppWrapper from 'containers/App';
 import Dashboard from './containers/Dashboard.js';
 
@@ -25,6 +30,10 @@ class App extends Component {
     return <AppWrapper padID={this.props.params.padID} />;
   }
 }
+
+/*const appHistory = useRouterHistory(createHistory)({
+  basename: '/'
+})*/
 
 function initBend(callback) {
   callback = callback || function () {};
@@ -44,8 +53,8 @@ function initBend(callback) {
       return;
     }
 
-    if (!Bend.getActiveUser()) {
-      BendUtils.wrapInCallback(Bend.User.login({
+    if (!activeUser) {
+      /*BendUtils.wrapInCallback(Bend.User.login({
         username: 'admin',
         password: 'admin123',
       }), (err, res) => {
@@ -55,11 +64,21 @@ function initBend(callback) {
         }
 
         callback(null, res);
-      });
+      });*/
+      callback(null, null);
     } else {
-      callback(null, Bend.getActiveUser());
+      callback(null, activeUser);
     }
   });
+}
+
+function requireAuth(nextState, replace) {
+  if (!Bend.getActiveUser()) {
+    replace({
+      pathname: '/login',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -72,8 +91,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     var routes =  (
       <Router history={hashHistory}>
-        <Route path="/" component={Dashboard}/>
-        <Route path="/pad/:padID" component={App}/>
+        <Route path="/" component={BasePage}>
+          <IndexRoute component={Dashboard} onEnter={requireAuth}/>
+          <Route path="pad/:padID" component={App} onEnter={requireAuth}/>
+          <Route path="login" component={Login}/>
+          <Route path="signup" component={Signup}/>
+          <Route path="error500" component={Error500}/>
+          <Route path="notFound" component={NotFound}/>
+        </Route>
+
+        <Route path="*" component={NotFound}/>
       </Router>
     );
 

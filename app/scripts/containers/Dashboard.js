@@ -38,6 +38,7 @@ export default class Dashboard extends Component {
   fetchPads(callback) {
     var query = new Bend.Query();
     query.ascending('_bmd.createdAt');
+    query.equalTo("user._id", Bend.getActiveUser()._id);
     BendUtils.wrapInCallback(Bend.DataStore.find('pad', query), callback);
   }
 
@@ -89,6 +90,8 @@ export default class Dashboard extends Component {
     var pad = _.find(pads, (pad) => pad._id === this.state.renamingID);
     if (pad) {
       pad.name = ReactDOM.findDOMNode(this.refs.nameInput).value;
+      pad.user = BendUtils.bendUserRef(Bend.getActiveUser()._id);
+
       this.setState({
         pads: pads,
         renamingID: '',
@@ -162,6 +165,7 @@ export default class Dashboard extends Component {
     return {
       name: 'Default Name',
       blocks: [],
+      user:BendUtils.bendUserRef(Bend.getActiveUser()._id)
     };
   }
 
